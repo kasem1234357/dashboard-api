@@ -1,4 +1,4 @@
-export const dataOverallStat = [
+ const dataOverallStat = [
   {
     totalCustomers: 5251,
     yearlySalesTotal: 65152,
@@ -484,7 +484,7 @@ export const dataOverallStat = [
   },
 ];
 
-export const dataProduct = [
+const dataProduct = [
   {
     title: "T-shirt",
     count: 0,
@@ -828,7 +828,7 @@ export const dataProduct = [
   },
 ];
 
-export const dataProductStat = [
+const dataProductStat = [
   {
     _id: "6371259df03239e680000035",
     productId: "63701d24f03239c72c00018e",
@@ -11092,7 +11092,7 @@ export const dataProductStat = [
   },
 ];
 
-export const dataTransaction = [
+const dataTransaction = [
   {
     _id: "63701d74f03239c72c000192",
     userId: "63701cc1f032390a34000319",
@@ -15596,7 +15596,7 @@ export const dataTransaction = [
   },
 ];
 
-export const dataUser = [
+const dataUser = [
   {
     _id: "63701cc1f03239c72c00017f",
     name: "Konstantine",
@@ -21266,3 +21266,10 @@ export const dataUser = [
     role: "admin",
   },
 ];
+module.exports = {
+  dataOverallStat,
+  dataUser,
+  dataProduct,
+  dataTransaction,
+  dataProductStat,
+}

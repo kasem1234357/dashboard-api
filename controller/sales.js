@@ -1,5 +1,6 @@
-const { dataOverallStat } = require("../../client/src/components/Data/dt");
+
 const API = require("../classes/Api");
+const { dataOverallStat } = require("../modelData");
 const OverallStat = require("../models/OverallStat"); // Assuming the schema file is named models/OverallStat.js
 const asyncErrorHandler = require("../wrapper_functions/asyncErrorHandler");
 
