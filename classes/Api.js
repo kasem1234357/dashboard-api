@@ -226,10 +226,10 @@ class API {
 //https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
 //https://dev.to/m__mdy__m/understanding-cookies-and-sessions-in-nodejs-3449
     const defaultOptions = {
-        httpOnly: false,
-        secure: false, // Set to true in production
-        sameSite: 'lax', // Adjust based on your needs
-        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+       httpOnly: true,        // Recommended for security
+  secure: true,          // REQUIRED for HTTPS in production
+  sameSite: 'none',      // Needed for cross-domain cookies
+  maxAge: 1000 * 60 * 60 * 24 * 7,
       
   }
   const finalOptions = { ...defaultOptions, ...options };
