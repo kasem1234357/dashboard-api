@@ -5,6 +5,7 @@ const Tasks = require("../models/Tasks");
 const hashPassword = require('../utils/hashPassword')
 const Product = require("../models/Product");
 const DashUser = require("../models/User");
+const Message = require("../models/SystemMasseges");
 const asyncErrorHandler = require("../wrapper_functions/asyncErrorHandler");
 const API = require('../classes/Api');
 const { signToken, cloudinaryUpload, cloudinaryDelete } = require('../utils');
@@ -166,7 +167,20 @@ if(!employee){
    }})
    api.dataHandler('update')
 })
+const sendMsg = asyncErrorHandler(async(req,res,next)=>{
+    const api = new API(req, res);
+   const user = req.user
+   const newMassge = new Message({ 
+     sender: user._id,
+     senderModel: 'DashUser',
+     audience:req.body.audience,
+     title: req.body.title,
+     content: req.body.content,
+   })
+   await newMassge.save()
+   api.dataHandler('create')
 
+})
   module.exports = {
-    getAllUser,getUser,updateUser,deleteUser,uploadProfileImg,removeProfileImg,changeRole
+    getAllUser,getUser,updateUser,deleteUser,uploadProfileImg,removeProfileImg,changeRole,sendMsg
   }

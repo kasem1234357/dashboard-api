@@ -4,7 +4,7 @@ const {isAuth, restrict} = require('../meddlewares')
 
 
 
-const { updateUser, getAllUser, getUser, deleteUser, uploadProfileImg, removeProfileImg, changeRole } = require("../controller/users");
+const { updateUser, getAllUser, getUser, deleteUser, uploadProfileImg, removeProfileImg, changeRole, sendMsg } = require("../controller/users");
 const { getAllMovies } = require("../controller/test");
 
 
@@ -16,12 +16,13 @@ router.delete('/:id',isAuth,restrict(['super_admin']),deleteUser);
 router.get('/test',getAllMovies)
 router.post('/profileImg',isAuth,uploadProfileImg)
 router.post('/role/:id',isAuth,restrict(['super_admin']),changeRole)
+router.post('/msg/send',isAuth,restrict(['normal','admin','super_admin','sales_manger']),sendMsg)
 
 
 
 /*
-router:{
-    put,
+router:{mc
+39    put,
     get,
     delete,
     
