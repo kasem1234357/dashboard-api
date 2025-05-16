@@ -170,10 +170,22 @@ if(!employee){
 const sendMsg = asyncErrorHandler(async(req,res,next)=>{
     const api = new API(req, res);
    const user = req.user
+   let receiver = null
+   if(req.body.audience === 'PRIVATE'){
+    //should be normal user
+     receiver = await DashUser.findOne({email:req.body.email})
+     if(!receiver){
+       const error = api.errorHandler('not_found')
+       next(error)
+     }
+
+   }
    const newMassge = new Message({ 
      sender: user._id,
      senderModel: 'DashUser',
      audience:req.body.audience,
+     receiver: receiver?receiver._id:null,
+     receiverModel:req.body.receiverModel,
      title: req.body.title,
      content: req.body.content,
    })
